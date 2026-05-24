@@ -1,12 +1,12 @@
 import { createContext, useState } from "react";
-
 export const AuthContext = createContext();
-
+import dotenv from "dotenv";
+dotenv.config();
 function AuthProvider({ children }) {
 
   // BACKEND URL
 
-  const backendUrl = "http://localhost:5000";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL 
 
   // TOKEN
 
