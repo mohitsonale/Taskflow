@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
-const authRoutes=require("./src/routes/authRoutes");
-const taskRoutes=require("./src/routes/taskRoutes");
+const authRoutes = require("./src/routes/authRoutes");
+const taskRoutes = require("./src/routes/taskRoutes");
 
 const pool = require("./src/config/db");
 
@@ -13,13 +13,13 @@ app.use(cors());
 app.use(express.json());
 
 app.use(cors({
-    origin: [
-  "http://localhost:5173",
-  "https://taskflow-ozh4.vercel.app"
-],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "token"],
-    credentials: true
+  origin: [
+    "http://localhost:5173",
+    "https://taskflow-ozh4.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "token"],
+  credentials: true
 }))
 
 pool.connect()

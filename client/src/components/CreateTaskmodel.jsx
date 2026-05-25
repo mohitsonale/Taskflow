@@ -1,16 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useContext } from "react"; 
+import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
-function CreateTaskModal({
-  openModal,
-  setOpenModal,
-  fetchTasks,
-  editTask,
-  setEditTask,
-}) {
+function CreateTaskModal({ openModal, setOpenModal, fetchTasks, editTask, setEditTask, }) {
 
   const [formData, setFormData] = useState({
     title: "",
@@ -19,11 +13,10 @@ function CreateTaskModal({
     due_date: "",
   });
 
-  const { token, backendUrl }=useContext(AuthContext);
-
+  const { token, backendUrl } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
 
-  // PREFILL FORM FOR EDIT
+
 
   useEffect(() => {
 
@@ -39,7 +32,7 @@ function CreateTaskModal({
 
   }, [editTask]);
 
-  // HANDLE INPUT CHANGE
+
 
   const handleChange = (e) => {
 
@@ -49,19 +42,15 @@ function CreateTaskModal({
     });
   };
 
-  // HANDLE SUBMIT
+
 
   const handleSubmit = async (e) => {
 
     e.preventDefault();
 
-    // VALIDATION
 
-    if (
-      !formData.title ||
-      !formData.description ||
-      !formData.due_date
-    ) {
+
+    if (!formData.title || !formData.description || !formData.due_date) {
       return toast.error("All fields are required");
     }
 
@@ -71,52 +60,23 @@ function CreateTaskModal({
 
       const token = localStorage.getItem("token");
 
-      // UPDATE TASK
-
       if (editTask) {
 
-        await axios.put(
-          `${backendUrl}/api/tasks/${editTask.id}`,
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        await axios.put(`${backendUrl}/api/tasks/${editTask.id}`, formData, { headers: { Authorization: `Bearer ${token}`, }, });
 
         toast.success("Task updated");
 
       } else {
-
-        // CREATE TASK
-
-        await axios.post(
-          `${backendUrl}/api/tasks`,
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        await axios.post(`${backendUrl}/api/tasks`, formData, { headers: { Authorization: `Bearer ${token}`, }, });
 
         toast.success("Task created");
       }
 
-      // REFRESH TASKS
-
       fetchTasks();
-
-      // CLOSE MODAL
 
       setOpenModal(false);
 
-      // RESET EDIT STATE
-
       setEditTask(null);
-
-      // RESET FORM
 
       setFormData({
         title: "",
@@ -139,8 +99,6 @@ function CreateTaskModal({
     }
   };
 
-  // CLOSE MODAL FUNCTION
-
   const closeModal = () => {
 
     setOpenModal(false);
@@ -155,7 +113,7 @@ function CreateTaskModal({
     });
   };
 
-  // DON'T RENDER IF CLOSED
+
 
   if (!openModal) {
     return null;
@@ -165,7 +123,7 @@ function CreateTaskModal({
 
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4 z-50">
 
-      {/* MODAL */}
+
 
       <div className="bg-white w-full max-w-lg rounded-3xl p-6 sm:p-8 animate-fadeIn">
 
@@ -176,49 +134,25 @@ function CreateTaskModal({
           <h2 className="text-2xl font-bold text-slate-800">
 
             {
-              editTask
-                ? "Edit Task"
-                : "Create Task"
+              editTask ? "Edit Task" : "Create Task"
             }
 
           </h2>
 
-          <button
-            onClick={closeModal}
-            className="text-slate-500 text-xl hover:text-black transition-all"
-          >
-            ✕
-          </button>
+          <button onClick={closeModal} className="text-slate-500 text-xl hover:text-black transition-all">✕</button>
 
         </div>
 
-        {/* FORM */}
 
-        <form
-          onSubmit={handleSubmit}
-          className="mt-8 space-y-5"
-        >
 
-          {/* TITLE */}
-
+        <form onSubmit={handleSubmit} className="mt-8 space-y-5">
           <div>
 
-            <label className="text-sm font-medium text-slate-600">
-              Title
-            </label>
+            <label className="text-sm font-medium text-slate-600">Title</label>
 
-            <input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              placeholder="Enter task title"
-              className="w-full mt-2 border border-slate-300 rounded-2xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <input type="text" name="title" value={formData.title} onChange={handleChange} placeholder="Enter task title" className="w-full mt-2 border border-slate-300 rounded-2xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500" />
 
           </div>
-
-          {/* DESCRIPTION */}
 
           <div>
 
@@ -226,74 +160,32 @@ function CreateTaskModal({
               Description
             </label>
 
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              placeholder="Enter task description"
-              rows="4"
-              className="w-full mt-2 border border-slate-300 rounded-2xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-            />
+            <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Enter task description" rows="4" className="w-full mt-2 border border-slate-300 rounded-2xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 resize-none" />
 
           </div>
 
-          {/* STATUS */}
-
           <div>
 
-            <label className="text-sm font-medium text-slate-600">
-              Status
-            </label>
+            <label className="text-sm font-medium text-slate-600">Status</label>
 
-            <select
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
-              className="w-full mt-2 border border-slate-300 rounded-2xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
-            >
-
+            <select name="status" value={formData.status} onChange={handleChange} className="w-full mt-2 border border-slate-300 rounded-2xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500">
               <option>Todo</option>
-
               <option>In Progress</option>
-
               <option>Completed</option>
-
             </select>
-
           </div>
-
-          {/* DUE DATE */}
 
           <div>
 
-            <label className="text-sm font-medium text-slate-600">
-              Due Date
-            </label>
+            <label className="text-sm font-medium text-slate-600">Due Date</label>
 
-            <input
-              type="date"
-              name="due_date"
-              value={formData.due_date}
-              onChange={handleChange}
-              className="w-full mt-2 border border-slate-300 rounded-2xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <input type="date" name="due_date" value={formData.due_date} onChange={handleChange} className="w-full mt-2 border border-slate-300 rounded-2xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"/>
 
           </div>
 
-          {/* BUTTON */}
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-2xl font-semibold transition-all disabled:opacity-50"
-          >
-
+          <button type="submit" disabled={loading} className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-2xl font-semibold transition-all disabled:opacity-50">
             {
-              loading
-                ? "Saving..."
-                : editTask
-                ? "Update Task"
-                : "Create Task"
+              loading? "Saving...": editTask? "Update Task": "Create Task"
             }
 
           </button>
@@ -307,3 +199,12 @@ function CreateTaskModal({
 }
 
 export default CreateTaskModal;
+
+
+
+
+
+
+
+
+
