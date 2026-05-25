@@ -1,4 +1,4 @@
-<img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/2c54f3a6-0936-41a2-bec1-1abbb61d5130" />﻿# TaskFlow Dashboard 
+# TaskFlow Dashboard 
 A modern full-stack task management dashboard built with React, Node.js, Express, PostgreSQL, and JWT Authentication. Users can securely create, manage, update, and track their daily tasks with a clean and responsive interface.
 
 # Live Demo 
@@ -37,29 +37,28 @@ bcryptjs
 
 # Screenshots
 - Dashboard
-- 
+  
 - Login Page
 - Create Task Modal
 
 
 # Project Structure
 TaskFlow-Dashboard
-│
-├── client
-│   ├── src
-│   │   ├── components
-│   │   ├── context
-│   │   ├── pages
-│   │   └── App.jsx
-│
-├── server
-│   ├── src
-│   │   ├── controllers
-│   │   ├── middleware
-│   │   ├── routes
-│   │   └── config
-│   │
-│   └── server.js
+- client
+  src
+   components
+   context
+   pages
+   App.jsx
+
+
+- server
+  src
+   controllers
+   middleware
+   routes
+   config
+  server.js
 
 # Run Project Locally
 - Start Backend
