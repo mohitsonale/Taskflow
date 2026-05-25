@@ -37,9 +37,18 @@ A modern full-stack task management dashboard built with React, Node.js, Express
 
 # Screenshots
 - Dashboard
-  
+  <img width="1919" height="915" alt="image" src="https://github.com/user-attachments/assets/f90104cf-b8e3-4846-bb37-bef79bf148b1" />
+
 - Login Page
+ <img width="1916" height="908" alt="image" src="https://github.com/user-attachments/assets/24c226e4-0991-48fb-9f85-54f86b5d11de" />
+
+
 - Create Task Modal
+
+  <img width="1919" height="907" alt="image" src="https://github.com/user-attachments/assets/a7ce51e9-0cf7-45b8-8cf7-92550ccff25a" />
+  
+
+
 
 
 # Project Structure
