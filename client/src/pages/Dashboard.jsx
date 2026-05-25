@@ -151,7 +151,7 @@ function Dashboard() {
 
                   <h3 className="text-2xl font-semibold text-slate-700">No Tasks Found</h3>
 
-                  <p className="text-slate-500 mt-3">Create your first task 🚀</p>
+                  <p className="text-slate-500 mt-3">Create your first task</p>
 
                 </div>
 
