@@ -45,35 +45,35 @@ bcryptjs
 # Project Structure
 TaskFlow-Dashboard
 - client
-  src
-   components
-   context
-   pages
-   App.jsx
+  - src
+   - components
+   - context
+   - pages
+   - App.jsx
 
 
 - server
-  src
-   controllers
-   middleware
-   routes
-   config
-  server.js
+  - src
+   - controllers
+   - middleware
+   - routes
+   - config
+  - server.js
 
 # Run Project Locally
 - Start Backend
-  cd server
-  npm run dev
+  - cd server
+  - npm run dev
 
 - Start Frontend
-  cd client
-  npm run dev
+  - cd client
+  - npm run dev
 
 # Author
-Mohit Sonale
-GitHub: https://github.com/mohitsonale
-LinkedIn: linkedin.com/in/mohit-sonale-113aaa321
+- Mohit Sonale
+- GitHub: https://github.com/mohitsonale
+- LinkedIn: linkedin.com/in/mohit-sonale-113aaa321
 
 # If you liked this project
+- Give it a star on GitHub ⭐
 
-Give it a star on GitHub ⭐
