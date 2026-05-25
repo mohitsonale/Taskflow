@@ -20,20 +20,20 @@ A modern full-stack task management dashboard built with React, Node.js, Express
 
 # Tech Stack
 - Frontend
-React.js
-Tailwind CSS
-React Router DOM
-Axios
-React Hot Toast
-Context API
+- React.js
+- Tailwind CSS
+- React Router DOM
+- Axios
+- React Hot Toast
+- Context API
 
--Backend
-Node.js
-Express.js
-PostgreSQL
-Supabase
-JWT Authentication
-bcryptjs
+- Backend
+- Node.js
+- Express.js
+- PostgreSQL
+- Supabase
+- JWT Authentication
+- bcryptjs
 
 # Screenshots
 - Dashboard
