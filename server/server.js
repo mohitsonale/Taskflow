@@ -12,7 +12,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(cors({origin:"https://taskflow-ozh4.vercel.app"}));
+app.use(cors({
+    origin: [
+  "http://localhost:5173",
+  "https://taskflow-ozh4.vercel.app"
+],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "token"],
+    credentials: true
+}))
 
 pool.connect()
   .then(() => console.log("Database connected"))

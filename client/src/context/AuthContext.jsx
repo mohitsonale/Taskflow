@@ -5,6 +5,7 @@ function AuthProvider({ children }) {
   // BACKEND URL
 
   const backendUrl = import.meta.env.VITE_BACKEND_URL 
+  console.log(backendUrl);
 
   // TOKEN
 
