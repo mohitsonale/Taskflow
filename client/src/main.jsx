@@ -9,19 +9,9 @@ import AuthProvider, { AuthContext } from './context/AuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-   
-
     <Toaster position="top-right" />
-
-     <AuthProvider>
-
-       <App />
-     </AuthProvider>
-    
-
-   
-   
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </BrowserRouter>
-  
-  
 )

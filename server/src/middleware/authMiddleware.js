@@ -1,27 +1,27 @@
-const jwt=require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
-const authMiddleware=(req,res,next)=>{
+const authMiddleware = (req, res, next) => {
 
-    const authheader=req.headers.authorization;
+    const authheader = req.headers.authorization;
 
-    if(!authheader || !authheader.startsWith('Bearer ')){
-        return res.status(401).json({success:false,message:'Unauthorized'});
+    if (!authheader || !authheader.startsWith('Bearer ')) {
+        return res.status(401).json({ success: false, message: 'Unauthorized' });
     }
 
-    const token=authheader.split(' ')[1];
+    const token = authheader.split(' ')[1];
 
-    try{
+    try {
 
-        const decoded=jwt.verify(token,process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        req.user=decoded;
+        req.user = decoded;
         next();
-        
+
     }
-    catch(err){
+    catch (err) {
         console.log(err);
-        return res.status(401).json({success:false,message:'Unauthorized'});
+        return res.status(401).json({ success: false, message: 'Unauthorized' });
     }
 }
 
-module.exports=authMiddleware;  
+module.exports = authMiddleware;  

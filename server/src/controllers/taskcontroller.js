@@ -3,11 +3,11 @@ const pool = require("../config/db");
 const getTasks = async (req, res) => {
 
     try {
-        const {status} = req.query;
+        const { status } = req.query;
         let query = "SELECT * FROM tasks WHERE user_id=$1";
-        let value=[req.user.id];
+        let value = [req.user.id];
 
-        if(status){
+        if (status) {
             query += " AND status=$2";
             value.push(status);
         }

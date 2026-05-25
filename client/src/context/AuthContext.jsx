@@ -2,34 +2,25 @@ import { createContext, useState } from "react";
 export const AuthContext = createContext();
 function AuthProvider({ children }) {
 
-  // BACKEND URL
 
-  const backendUrl = import.meta.env.VITE_BACKEND_URL 
-  console.log(backendUrl);
-
-  // TOKEN
-
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
   const [token, setToken] = useState(
     localStorage.getItem("token") || ""
   );
 
-  // LOGIN
-
   const login = (newToken) => {
-
     localStorage.setItem("token", newToken);
-
     setToken(newToken);
   };
 
-  // LOGOUT
+
 
   const logout = () => {
-
     localStorage.removeItem("token");
-
     setToken("");
   };
+
+
 
   const value = {
     backendUrl,
@@ -50,3 +41,7 @@ function AuthProvider({ children }) {
 }
 
 export default AuthProvider;
+
+
+
+

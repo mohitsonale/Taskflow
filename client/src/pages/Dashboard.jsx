@@ -10,22 +10,16 @@ import { AuthContext } from "../context/AuthContext";
 
 function Dashboard() {
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
-  const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState("All");
-  const [editTask, setEditTask] = useState(null);
-  const { token, backendUrl } =useContext(AuthContext);
+  const [sidebarOpen, setSidebarOpen]=useState(false);
+  const [openModal, setOpenModal]=useState(false);
+  const [tasks, setTasks]=useState([]);
+  const [loading, setLoading]=useState(true);
+  const [filter, setFilter]=useState("All");
+  const [editTask, setEditTask]=useState(null);
+  const { token, backendUrl }=useContext(AuthContext);
 
   useEffect(() => {
-
     const token = localStorage.getItem("token");
-
-    // if (!token) {
-    //   window.location.href = "/";
-    // }
-
     fetchTasks();
 
   }, []);
@@ -38,23 +32,13 @@ function Dashboard() {
 
       const token = localStorage.getItem("token");
 
-      const res = await axios.get(
-       `${backendUrl}/api/tasks`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axios.get(`${backendUrl}/api/tasks`, { headers: { Authorization: `Bearer ${token}`, }, });
 
       setTasks(res.data.tasks);
 
     } catch (error) {
-
       console.log(error);
-
     } finally {
-
       setLoading(false);
     }
   };
@@ -72,16 +56,10 @@ function Dashboard() {
 
     <div className="min-h-screen bg-slate-100 flex">
 
-      {/* SIDEBAR */}
-
-
-
       <Sidebar
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
       />
-
-      {/* MAIN CONTENT */}
 
       <main className="flex-1 p-4 sm:p-6 lg:p-8">
 
@@ -94,31 +72,21 @@ function Dashboard() {
           setFilter={setFilter}
         />
 
-        {/* STATS */}
-
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-10">
 
-          {/* TOTAL */}
+
 
           <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
 
-            <h3 className="text-slate-500 text-sm font-medium">
-              Total Tasks
-            </h3>
+            <h3 className="text-slate-500 text-sm font-medium">Total Tasks</h3>
 
-            <h2 className="text-4xl font-bold text-slate-800 mt-4">
-              {tasks.length}
-            </h2>
+            <h2 className="text-4xl font-bold text-slate-800 mt-4">{tasks.length}</h2>
 
           </div>
 
-          {/* COMPLETED */}
-
           <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
 
-            <h3 className="text-slate-500 text-sm font-medium">
-              Completed
-            </h3>
+            <h3 className="text-slate-500 text-sm font-medium">Completed</h3>
 
             <h2 className="text-4xl font-bold text-green-600 mt-4">
 
@@ -132,13 +100,9 @@ function Dashboard() {
 
           </div>
 
-          {/* IN PROGRESS */}
-
           <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
 
-            <h3 className="text-slate-500 text-sm font-medium">
-              In Progress
-            </h3>
+            <h3 className="text-slate-500 text-sm font-medium">In Progress</h3>
 
             <h2 className="text-4xl font-bold text-yellow-500 mt-4">
 
@@ -154,27 +118,21 @@ function Dashboard() {
 
         </div>
 
-        {/* TASKS */}
-
         <div className="mt-10">
 
           <div className="flex items-center justify-between">
 
             <div>
 
-              <h2 className="text-3xl font-bold text-slate-800">
-                Your Tasks
-              </h2>
+              <h2 className="text-3xl font-bold text-slate-800">Your Tasks</h2>
 
-              <p className="text-slate-500 mt-2">
-                Manage and track your work
-              </p>
+              <p className="text-slate-500 mt-2">Manage and track your work</p>
 
             </div>
 
           </div>
 
-          {/* TASK GRID */}
+
 
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-8">
 
@@ -183,9 +141,7 @@ function Dashboard() {
 
                 <div className="bg-white rounded-3xl p-10 border border-slate-200">
 
-                  <h3 className="text-2xl font-semibold text-slate-700">
-                    Loading tasks...
-                  </h3>
+                  <h3 className="text-2xl font-semibold text-slate-700">Loading tasks...</h3>
 
                 </div>
 
@@ -193,13 +149,9 @@ function Dashboard() {
 
                 <div className="bg-white rounded-3xl p-10 border border-slate-200">
 
-                  <h3 className="text-2xl font-semibold text-slate-700">
-                    No Tasks Found
-                  </h3>
+                  <h3 className="text-2xl font-semibold text-slate-700">No Tasks Found</h3>
 
-                  <p className="text-slate-500 mt-3">
-                    Create your first task 🚀
-                  </p>
+                  <p className="text-slate-500 mt-3">Create your first task 🚀</p>
 
                 </div>
 
@@ -225,7 +177,6 @@ function Dashboard() {
 
       </main>
 
-      {/* CREATE TASK MODAL */}
 
       <CreateTaskModal
         openModal={openModal}
@@ -233,11 +184,23 @@ function Dashboard() {
         fetchTasks={fetchTasks}
         editTask={editTask}
         setEditTask={setEditTask}
-
       />
+
 
     </div>
   );
 }
 
 export default Dashboard;
+
+
+
+
+
+
+
+
+
+
+
+
